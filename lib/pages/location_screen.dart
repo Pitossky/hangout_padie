@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/widgets/exports.dart';
-
 import 'lounge_pages/cubana_screen.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -176,7 +175,7 @@ class _LocationScreenState extends State<LocationScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: CustomNavBar(),
     );
   }
 }

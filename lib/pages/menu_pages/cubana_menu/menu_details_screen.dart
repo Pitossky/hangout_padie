@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:location/model/cubana_menu.dart';
 import 'package:location/widgets/exports.dart';
 
+//import 'main_menu_screen.dart';
+
 class MenuDetailsScreen extends StatefulWidget {
-  const MenuDetailsScreen({Key? key}) : super(key: key);
+  final List<SubCategory> subItems;
+  const MenuDetailsScreen({Key? key, required this.subItems}) : super(key: key);
 
   @override
   _MenuDetailsScreenState createState() => _MenuDetailsScreenState();
@@ -22,21 +25,28 @@ class _MenuDetailsScreenState extends State<MenuDetailsScreen> {
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const CustomHeader(),
-              const Padding(
-                padding: EdgeInsets.only(
+              Padding(
+                padding: const EdgeInsets.only(
                   top: 10.0,
                   bottom: 20.0,
                 ),
                 child: Center(
-                  child: Text(
-                    'DRINKS',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.72,
+                    child: ListView.builder(
+                      itemCount: widget.subItems.length,
+                      itemBuilder: (context, index) {
+                        return CustomMenuRow(
+                          images: widget.subItems[index].subcategoryImage,
+                            secondText: 'view all',
+                        firstText: widget.subItems[index].subcategoryName,
+                        );
+                      },
                     ),
                   ),
                 ),
               ),
+              /*
               Expanded(
                 //height: MediaQuery.of(context).size.height * 0.7,
                 child: Column(
@@ -55,10 +65,11 @@ class _MenuDetailsScreenState extends State<MenuDetailsScreen> {
                             //mainAxisSize: MainAxisSize.min,
                             children: [
                               CustomMenuRow(
+                                images: [],
                                 firstText: 'Alcohol & Beers',
                                 secondText: 'view all',
                               ),
-                              CustomMenuContainer(
+                              /* CustomMenuContainer(
                                 drinkImages: menuImages
                                     .menuSubcategoryImages.alcoholImageUrl,
                                 imageInt: menuImages.menuSubcategoryImages
@@ -66,30 +77,32 @@ class _MenuDetailsScreenState extends State<MenuDetailsScreen> {
                               ),
                               const SizedBox(
                                 height: 20,
-                              ),
+                              ),*/
                               CustomMenuRow(
+                                images: [],
                                 firstText: 'Soft Drinks & Juices',
                                 secondText: 'view all',
                               ),
-                              CustomMenuContainer(
-                                drinkImages: menuImages
+                              /* CustomMenuContainer(
+                                //drinkImages: menuImages
                                     .menuSubcategoryImages.softdrinksImageUrl,
-                                imageInt: menuImages.menuSubcategoryImages
+                               // imageInt: menuImages.menuSubcategoryImages
                                     .softdrinksImageUrl.length,
-                              ),
+                              ),*/
                               const SizedBox(
                                 height: 20,
                               ),
                               CustomMenuRow(
+                                images: [],
                                 firstText: 'Cocktails & Special Drinks',
                                 secondText: 'view all',
                               ),
-                              CustomMenuContainer(
+                              /*CustomMenuContainer(
                                 drinkImages: menuImages
                                     .menuSubcategoryImages.cocktailImageUrl,
                                 imageInt: menuImages.menuSubcategoryImages
                                     .cocktailImageUrl.length,
-                              ),
+                              ),*/
                             ],
                           )
                         ],
@@ -97,13 +110,12 @@ class _MenuDetailsScreenState extends State<MenuDetailsScreen> {
                     ),
                   ],
                 ),
-              ),
+              ),*/
             ],
           ),
         ),
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: CustomNavBar(),
     );
   }
 }
-

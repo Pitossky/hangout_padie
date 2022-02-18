@@ -45,7 +45,7 @@ class _BoardroomScreenState extends State<BoardroomScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: CustomNavBar(),
     );
   }
 }

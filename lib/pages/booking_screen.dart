@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:location/widgets/exports.dart';
-
 import 'lounge_pages/cubana_screen.dart';
 
 class BookingScreen extends StatefulWidget {
@@ -390,7 +389,7 @@ class _BookingScreenState extends State<BookingScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: CustomNavBar(),
     );
   }
 }

@@ -193,7 +193,7 @@ class _CubanaScreenState extends State<CubanaScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomNavBar(),
+     bottomNavigationBar: CustomNavBar(),
     );
   }
 }

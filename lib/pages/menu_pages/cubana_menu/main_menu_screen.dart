@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/pages/lounge_pages/cubana_screen.dart';
+import 'package:location/pages/menu_pages/cubana_menu/menu_details_screen.dart';
 import 'package:location/widgets/exports.dart';
 
 class MainMenuScreen extends StatefulWidget {
@@ -75,9 +76,19 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         physics: const BouncingScrollPhysics(),
+                        itemCount: menuImages.length,
                         itemBuilder: (context, index) {
                           return InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => MenuDetailsScreen(
+                                    subItems:
+                                        menuImages[index].subcategoryItems,
+                                  ),
+                                ),
+                              );
+                            },
                             child: Card(
                               elevation: 0.0,
                               color: Colors.white,
@@ -91,8 +102,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20.0),
                                       child: Image.asset(
-                                        menuImages.menuCategoryImages[index]
-                                            .toString(),
+                                        menuImages[index].menuImages,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -102,7 +112,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                             ),
                           );
                         },
-                        itemCount: menuImages.menuCategoryImages.length,
                       ),
                     ),
                   ],
@@ -112,7 +121,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: CustomNavBar(),
     );
   }
 }
